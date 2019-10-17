@@ -43,12 +43,6 @@ public class PluginManager {
 
     private Context context;
 
-//    private PackageInfo packageInfo;
-
-//    private DexClassLoader dexClassLoader;
-
-//    private Resources resources;
-
     public void init(Context context) {
         this.context = context.getApplicationContext();
         pluginItemHashMap = new HashMap<>();
@@ -56,7 +50,6 @@ public class PluginManager {
 
     public void loadPluginApk(String apkPath) {
         //取出更改路径下的Activity
-//        packageInfo = context.getPackageManager().getPackageArchiveInfo(apkPath, PackageManager.GET_ACTIVITIES);
         File odexFile = context.getDir("odex", Context.MODE_PRIVATE);
         //创建DexClassLoader加载器
         DexClassLoader dexClassLoader = new DexClassLoader(apkPath, odexFile.getAbsolutePath(), null, context.getClassLoader());
@@ -80,16 +73,14 @@ public class PluginManager {
         return pluginItemHashMap.get(dexPath);
     }
 
-//    public Resources getResources() {
-//        return resources;
-//    }
-
-//    public PackageInfo getPackageInfo() {
-//        return packageInfo;
-//    }
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void startActivity(Context context, Bundle bundle) {
+        String reallyActivityName = bundle.getString(PluginConst.REALLY_ACTIVITY_NAME);
+        int launchModel = bundle.getInt(PluginConst.LAUNCH_MODEL, -1);
+        boolean isCanJump = LaunchModelManager.getInstance().checkLaunchModel(launchModel, reallyActivityName);
+        if(!isCanJump) {
+            return;
+        }
         Intent intent = new Intent(context, ProxyActivity.class);
         intent.putExtras(bundle);
         context.startActivity(intent);

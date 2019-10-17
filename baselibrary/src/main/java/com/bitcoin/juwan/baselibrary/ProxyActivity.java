@@ -21,12 +21,8 @@ public class ProxyActivity extends Activity {
         String dexPath = getIntent().getExtras().getString(PluginConst.DEX_PATH);
         int launchModel = getIntent().getExtras().getInt(PluginConst.LAUNCH_MODEL, -1);
 
-        boolean b = LaunchModelManager.getInstance().checkLaunchModel(ProxyActivity.this, launchModel, reallyActivity);
-        if(!b) {
-            Log.e("----::", "======" + reallyActivity + " " + launchModel);
-            finish();
-            return;
-        }
+        LaunchModelManager.getInstance().addActivity(ProxyActivity.this, launchModel, reallyActivity);
+
 
         try {
             Class<?> aClass = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader().loadClass(reallyActivity);
@@ -120,5 +116,12 @@ public class ProxyActivity extends Activity {
     public void startActivity(Intent intent) {
 //        LaunchModelManager.getInstance().clearPluginActivity();
         super.startActivity(intent);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        LaunchModelManager.getInstance().removeLastActivity();
     }
 }
