@@ -3,6 +3,8 @@ package com.bitcoin.juwan.baselibrary;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,11 +13,21 @@ public class ProxyActivity extends Activity {
 
     private IActivity iActivity;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String reallyActivity = getIntent().getStringExtra(PluginConst.REALLY_ACTIVITY_NAME);
-        String dexPath = getIntent().getStringExtra(PluginConst.DEX_PATH);
+        String reallyActivity = getIntent().getExtras().getString(PluginConst.REALLY_ACTIVITY_NAME);
+        String dexPath = getIntent().getExtras().getString(PluginConst.DEX_PATH);
+        int launchModel = getIntent().getExtras().getInt(PluginConst.LAUNCH_MODEL, -1);
+
+        boolean b = LaunchModelManager.getInstance().checkLaunchModel(ProxyActivity.this, launchModel, reallyActivity);
+        if(!b) {
+            Log.e("----::", "======" + reallyActivity + " " + launchModel);
+            finish();
+            return;
+        }
+
         try {
             Class<?> aClass = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader().loadClass(reallyActivity);
             Object o = aClass.newInstance();
@@ -81,16 +93,13 @@ public class ProxyActivity extends Activity {
         if(getIntent() == null) {
             return  super.getClassLoader();
         } else {
-            String stringExtra = getIntent().getStringExtra(PluginConst.DEX_PATH);
+            String stringExtra = getIntent().getExtras().getString(PluginConst.DEX_PATH);
             if(stringExtra == null) {
                 return super.getClassLoader();
             } else{
                 return PluginManager.getInstance().getPluginItem(stringExtra).getClassLoader();
             }
         }
-//        return PluginManager.getInstance().getDexClassLoader() != null ?
-//                PluginManager.getInstance().getDexClassLoader() :
-//                super.getClassLoader();
     }
 
     @Override
@@ -98,19 +107,18 @@ public class ProxyActivity extends Activity {
         if(getIntent() == null) {
             return super.getResources();
         }
-        String stringExtra = getIntent().getStringExtra(PluginConst.DEX_PATH);
+        String stringExtra = getIntent().getExtras().getString(PluginConst.DEX_PATH);
         if(stringExtra == null) {
              return super.getResources();
         } else{
             return PluginManager.getInstance().getPluginItem(stringExtra).getResources();
         }
-//        return PluginManager.getInstance().getResources() != null ?
-//                PluginManager.getInstance().getResources() :
-//                super.getResources();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void startActivity(Intent intent) {
+//        LaunchModelManager.getInstance().clearPluginActivity();
         super.startActivity(intent);
     }
 }

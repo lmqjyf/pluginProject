@@ -118,7 +118,11 @@ public class PluginBaseActivity extends AppCompatActivity implements IActivity {
         if(!isPlugin) {
             super.startActivity(intent);
         } else {
-            PluginManager.getInstance().startActivity(proxy, intent.getComponent().getClassName(), PluginConst.Plugin_1_ApkDex);
+            Bundle bundle = new Bundle();
+            bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_1_ApkDex);
+            bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, intent.getComponent().getClassName());
+            bundle.putInt(PluginConst.LAUNCH_MODEL, 2);
+            PluginManager.getInstance().startActivity(proxy, bundle);
         }
     }
 }

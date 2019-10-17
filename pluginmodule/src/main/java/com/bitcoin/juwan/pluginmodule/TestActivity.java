@@ -27,13 +27,6 @@ public class TestActivity extends PluginBaseActivity {
      * 跳转到宿主MainActivity
      */
     private void startHostMainActivity() {
-//            Intent reallyIntent = new Intent();
-//            reallyIntent.putExtra(PluginConst.REALLY_ACTIVITY_NAME, intent.getComponent().getClassName());
-//            proxy.startActivity(reallyIntent);
-//        PluginManager.getInstance().startActivity(proxy, );
-        Intent intent = new Intent();
-        ComponentName componentName = new ComponentName("com.bitcoin.juwan.hostappproject", "com.bitcoin.juwan.hostappproject.MainActivity");
-        intent.setComponent(componentName);
-        proxy.startActivity(intent);
+        startActivity(new Intent(proxy, ThirdActivity.class));
     }
 }

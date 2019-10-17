@@ -32,8 +32,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startPluginActivity() {
-//        PluginManager.getInstance().startActivity(MainActivity.this, PluginManager.getInstance().getPackageInfo().activities[1].name);
-        PluginManager.getInstance().startActivity(MainActivity.this, "com.bitcoin.juwan.pluginmodule.MainActivity", Plugin_1_ApkDex);
+        Bundle bundle = new Bundle();
+        bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_1_ApkDex);
+        bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.bitcoin.juwan.pluginmodule.MainActivity");
+        bundle.putInt(PluginConst.LAUNCH_MODEL, 1);
+        PluginManager.getInstance().startActivity(MainActivity.this, bundle);
     }
 
     private void intentStart() {

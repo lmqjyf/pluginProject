@@ -6,6 +6,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -85,10 +88,10 @@ public class PluginManager {
 //        return packageInfo;
 //    }
 
-    public void startActivity(Context context, String reallyActivityName, String dexPath) {
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void startActivity(Context context, Bundle bundle) {
         Intent intent = new Intent(context, ProxyActivity.class);
-        intent.putExtra(PluginConst.DEX_PATH, dexPath);
-        intent.putExtra(PluginConst.REALLY_ACTIVITY_NAME, reallyActivityName);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
 }
