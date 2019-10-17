@@ -17,7 +17,7 @@ import java.util.List;
 public class LaunchActivityList {
 
     /**
-     * 添加
+     *
      * @param activityItem
      */
     public void addActivityItem(PluginActivityItem activityItem) {
