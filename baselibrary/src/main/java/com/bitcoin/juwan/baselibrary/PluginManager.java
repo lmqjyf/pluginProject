@@ -91,9 +91,6 @@ public class PluginManager {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void startActivity(Context context, Bundle bundle) {
         boolean isCanJump = ActivityStackManager.getInstance().checkCanStartNewActivity(bundle);
-
-
-        Log.e("-----", "" + isCanJump);
         if (isCanJump) {
             Intent intent = new Intent(context, StubActivity.class);
             intent.putExtras(bundle);

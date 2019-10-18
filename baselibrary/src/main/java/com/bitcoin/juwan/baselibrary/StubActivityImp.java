@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 
 /**
  * author: liumengqiang
@@ -23,6 +24,7 @@ public class StubActivityImp implements IPluginActivity{
     private void handleIntent(Intent intent, Activity activity) {
         String reallyActivity = intent.getExtras().getString(PluginConst.REALLY_ACTIVITY_NAME);
         String dexPath = intent.getExtras().getString(PluginConst.DEX_PATH);
+        Log.e("---:", "-----");
         ActivityStackManager.getInstance().addActivity(activity, intent.getExtras());
         try {
             Class<?> aClass = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader().loadClass(reallyActivity);

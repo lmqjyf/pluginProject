@@ -125,8 +125,7 @@ public class ActivityStackManager {
     /**
      * 向List中添加数据
      * @param activity 要入栈的Activity
-     * @param launchModel Activity的启动模式
-     * @param activityReallyName Activity真实的名称（包名+类名，如果是插件则是真实的插件的包名+类名）
+     * @Bundle
      */
     public void addActivity(Activity activity, Bundle bundle) {
         String reallyActivityName = bundle.getString(PluginConst.REALLY_ACTIVITY_NAME);
@@ -140,5 +139,13 @@ public class ActivityStackManager {
     public void removeLastActivity() {
         Log.e("----:", ""  + activityList.size() +  "");
         activityList.remove(activityList.size() - 1);
+    }
+
+    /**
+     *
+     */
+    public void clearActivityList() {
+        Log.e("----:", "清空");
+        activityList.clear();
     }
 }

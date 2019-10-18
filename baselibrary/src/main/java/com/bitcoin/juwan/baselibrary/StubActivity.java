@@ -1,61 +1,53 @@
 package com.bitcoin.juwan.baselibrary;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.os.Bundle;
+import android.util.Log;
 
 public class StubActivity extends Activity {
 
-    private IPluginActivity iPluginActivity;
+    private StubActivityImp stubActivityImp;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        stubActivityImp = new StubActivityImp(getIntent(), this);
     }
 
 
     @Override
     protected void onStart() {
-        if(iPluginActivity != null) {
-            iPluginActivity.onStart();
-        }
+        stubActivityImp.onStart();
         super.onStart();
     }
 
     @Override
     protected void onResume() {
-        if(iPluginActivity != null) {
-            iPluginActivity.onResume();
-        }
+        stubActivityImp.onResume();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        if(iPluginActivity != null) {
-            iPluginActivity.onPause();
-        }
+        stubActivityImp.onPause();
         super.onPause();
     }
 
     @Override
     protected void onStop() {
-        if(iPluginActivity != null) {
-            iPluginActivity.onStop();
-        }
+        stubActivityImp.onStop();
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        if(iPluginActivity != null) {
-            iPluginActivity.onDestroy();
-        }
+        stubActivityImp.onDestroy();
         super.onDestroy();
     }
 
@@ -89,9 +81,15 @@ public class StubActivity extends Activity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void startActivity(Intent intent) {
+        String className = intent.getComponent().getClassName();
+        //此时是需要跳到宿主APP中
+        if(!"com.bitcoin.juwan.baselibrary.StubActivity".equals(className)) {
+            ActivityStackManager.getInstance().clearActivityList();
+        }
         super.startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onBackPressed() {
         super.onBackPressed();
