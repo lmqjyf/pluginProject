@@ -9,9 +9,9 @@ public class PluginConst {
 
     public static String DEX_PATH = "dex_path";
 
-    public static String REALLY_ACTIVITY_NAME = "reallyActivityName";
+    public static String LAUNCH_MODEL = "launch_model";
 
-    public static String LAUNCH_MODEL = "launchModel";
+    public static String REALLY_ACTIVITY_NAME = "reallyActivityName";
 
     public static String isPlugin = "isPlugin";
 

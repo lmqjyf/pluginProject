@@ -40,8 +40,8 @@ public class ThirdActivity extends PluginBaseActivity {
         ComponentName componentName = new ComponentName("com.bitcoin.juwan.hostappproject", "com.bitcoin.juwan.hostappproject.MainActivity");
         intent.setComponent(componentName);
         Bundle bundle = new Bundle();
-        bundle.putInt(PluginConst.LAUNCH_MODEL, 0);
         bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.bitcoin.juwan.hostappproject.MainActivity");
+        bundle.putInt(PluginConst.LAUNCH_MODEL, 0);
         intent.putExtras(bundle);
         ((IProxyActivity)proxy).startHostActivity(intent);
     }

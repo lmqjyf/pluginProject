@@ -2,7 +2,9 @@ package com.bitcoin.juwan.baselibrary;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -113,6 +115,7 @@ public class PluginBaseActivity extends AppCompatActivity implements IActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void startActivity(Intent intent) {
         if(!isPlugin) {

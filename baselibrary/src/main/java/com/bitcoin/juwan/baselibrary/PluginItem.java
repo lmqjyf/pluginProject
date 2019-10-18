@@ -5,14 +5,14 @@ import android.content.res.Resources;
 /**
  * FileName：PluginItem
  * Create By：liumengqiang
- * Description：TODO
+ * Description：用于保存已加载的插件的相关信息
  */
 public class PluginItem {
-    private String dexPath;
+    private String dexPath; // 插件的DexPath
 
-    private ClassLoader classLoader;
+    private ClassLoader classLoader; // 加载插件的ClassLoader
 
-    private Resources resources;
+    private Resources resources; // 插件中的Resources
 
     public PluginItem(String dexPath, ClassLoader classLoader, Resources resources) {
         this.dexPath = dexPath;

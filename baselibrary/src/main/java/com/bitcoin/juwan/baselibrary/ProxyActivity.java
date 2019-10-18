@@ -1,11 +1,11 @@
 package com.bitcoin.juwan.baselibrary;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.os.Bundle;
+import android.util.Log;
 
 public class ProxyActivity extends IProxyActivity {
 
@@ -17,11 +17,6 @@ public class ProxyActivity extends IProxyActivity {
         super.onCreate(savedInstanceState);
         String reallyActivity = getIntent().getExtras().getString(PluginConst.REALLY_ACTIVITY_NAME);
         String dexPath = getIntent().getExtras().getString(PluginConst.DEX_PATH);
-        int launchModel = getIntent().getExtras().getInt(PluginConst.LAUNCH_MODEL, -1);
-
-        LaunchModelManager.getInstance().addActivity(ProxyActivity.this, launchModel, reallyActivity);
-
-
         try {
             Class<?> aClass = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader().loadClass(reallyActivity);
             Object o = aClass.newInstance();
@@ -115,10 +110,4 @@ public class ProxyActivity extends IProxyActivity {
         super.startActivity(intent);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        LaunchModelManager.getInstance().removeLastActivity();
-    }
 }
