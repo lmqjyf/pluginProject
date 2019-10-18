@@ -24,7 +24,7 @@ public class ThirdActivity extends PluginBaseActivity {
         findViewById(R.id.plugin_third_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(proxy, TestActivity.class));
+                startActivity(new Intent(proxy, SecondActivity.class));
             }
         });
     }

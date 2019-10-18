@@ -8,7 +8,7 @@ import android.view.View;
 import com.bitcoin.juwan.baselibrary.PluginBaseActivity;
 import com.bitcoin.juwan.baselibrary.PluginManager;
 
-public class TestActivity extends PluginBaseActivity {
+public class SecondActivity extends PluginBaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

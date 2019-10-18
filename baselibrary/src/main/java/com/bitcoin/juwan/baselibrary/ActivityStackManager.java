@@ -73,16 +73,16 @@ public class ActivityStackManager {
 
     private boolean checkLaunchModel(int index, int launchModel) {
         switch (launchModel) {
-            case 0: { //标准模式
+            case PluginConst.LaunchModel.STANDARD: { //标准模式
                 return true;
             }
-            case 1: { //SingleTop模式
+            case PluginConst.LaunchModel.SINGLE_TOP: { //SingleTop模式
                 return checkSingleTop(index);
             }
-            case 2: { //SingleTask模式
+            case PluginConst.LaunchModel.SINGLE_TASK: { //SingleTask模式
                 return checkSingleTask(index);
             }
-            case 3: { //SingInstance模式
+            case PluginConst.LaunchModel.SINGLE_INSTANCE: { //SingInstance模式
                 return true;
             }
         }

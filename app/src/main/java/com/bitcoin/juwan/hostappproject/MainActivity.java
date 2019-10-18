@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
         Bundle bundle = new Bundle();
         bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_1_ApkDex);
         bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.bitcoin.juwan.pluginmodule.MainActivity");
-        bundle.putInt(PluginConst.LAUNCH_MODEL, 2);
+        bundle.putInt(PluginConst.LAUNCH_MODEL, PluginConst.LaunchModel.SINGLE_TASK);
         PluginManager.getInstance().startActivity(MainActivity.this, bundle);
     }
 }

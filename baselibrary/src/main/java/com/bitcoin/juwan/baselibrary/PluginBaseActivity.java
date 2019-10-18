@@ -6,18 +6,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 /**
  * FileName：PluginBaseActivity
  * Create By：liumengqiang
- * Description：TODO
+ * Description：基类
  */
-public class PluginBaseActivity extends AppCompatActivity implements IPluginActivity {
+public class PluginBaseActivity extends AppCompatActivity implements IPluginActivity , ILaunch{
 
     protected Activity proxy;
 
     boolean isPlugin = false;
+
+    private int launchModel = -1;
 
     @Override
     public void attach(Activity activity) {
@@ -124,8 +127,13 @@ public class PluginBaseActivity extends AppCompatActivity implements IPluginActi
             Bundle bundle = new Bundle();
             bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_1_ApkDex);
             bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, intent.getComponent().getClassName());
-            bundle.putInt(PluginConst.LAUNCH_MODEL, 2);
+            bundle.putInt(PluginConst.LAUNCH_MODEL, launchModel == -1 ? PluginConst.LaunchModel.SINGLE_TASK : launchModel);
             PluginManager.getInstance().startActivity(proxy, bundle);
         }
+    }
+
+    @Override
+    public void setLaunchModel(int launchModel) {
+        this.launchModel = launchModel;
     }
 }

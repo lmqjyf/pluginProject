@@ -21,6 +21,6 @@ public class MainActivity extends PluginBaseActivity {
     }
 
     private void jumpt() {
-        startActivity(new Intent(proxy, TestActivity.class));
+        startActivity(new Intent(proxy, SecondActivity.class));
     }
 }

@@ -7,7 +7,7 @@ import android.os.Bundle;
 /**
  * FileName：IPluginActivity
  * Create By：liumengqiang
- * Description：TODO
+ * Description：插件基类接口
  */
 public interface IPluginActivity {
     /**
