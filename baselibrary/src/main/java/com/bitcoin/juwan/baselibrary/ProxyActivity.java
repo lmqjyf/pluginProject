@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
-public class ProxyActivity extends Activity {
+public class ProxyActivity extends IProxyActivity {
 
     private IActivity iActivity;
 
@@ -114,7 +112,6 @@ public class ProxyActivity extends Activity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void startActivity(Intent intent) {
-//        LaunchModelManager.getInstance().clearPluginActivity();
         super.startActivity(intent);
     }
 

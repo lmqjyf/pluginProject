@@ -1,5 +1,6 @@
 package com.bitcoin.juwan.baselibrary;
 
+import android.app.Activity;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.ArrayMap;
@@ -93,7 +94,7 @@ public class LaunchModelManager {
         int flagIndex = 0;
         while (iterator.hasNext()) {
             PluginActivityItem item = iterator.next();
-            if(flagIndex >= index) {
+            if(flagIndex > index) {
                 item.getActivity().finish();
                 iterator.remove();
             }
@@ -106,7 +107,7 @@ public class LaunchModelManager {
         activityList.clear();
     }
 
-    public void addActivity(ProxyActivity activity, int launchModel, String activityReallyName) {
+    public void addActivity(Activity activity, int launchModel, String activityReallyName) {
         activityList.add(new PluginActivityItem(activity, launchModel, activityReallyName)); //直接启动
     }
 

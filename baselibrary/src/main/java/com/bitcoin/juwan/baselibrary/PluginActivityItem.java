@@ -1,5 +1,6 @@
 package com.bitcoin.juwan.baselibrary;
 
+import android.app.Activity;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
@@ -11,7 +12,7 @@ import android.support.annotation.RequiresApi;
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class PluginActivityItem {
 
-    private ProxyActivity activity;
+    private Activity activity;
 
     private int launchModel;
 
@@ -25,13 +26,13 @@ public class PluginActivityItem {
         this.activityReallyName = activityReallyName;
     }
 
-    public PluginActivityItem(ProxyActivity activity, int launchModel, String activityReallyName) {
+    public PluginActivityItem(Activity activity, int launchModel, String activityReallyName) {
         this.activity = activity;
         this.launchModel = launchModel;
         this.activityReallyName = activityReallyName;
     }
 
-    public ProxyActivity getActivity() {
+    public Activity getActivity() {
         return activity;
     }
 

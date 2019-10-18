@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -78,6 +79,7 @@ public class PluginManager {
         String reallyActivityName = bundle.getString(PluginConst.REALLY_ACTIVITY_NAME);
         int launchModel = bundle.getInt(PluginConst.LAUNCH_MODEL, -1);
         boolean isCanJump = LaunchModelManager.getInstance().checkLaunchModel(launchModel, reallyActivityName);
+        Log.e("-----:", reallyActivityName + " " + launchModel + " " + isCanJump);
         if(!isCanJump) {
             return;
         }
