@@ -2,6 +2,7 @@ package com.bitcoin.juwan.baselibrary;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
@@ -15,9 +16,16 @@ public class StubActivity extends Activity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        stubActivityImp = new StubActivityImp();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        stubActivityImp = new StubActivityImp(getIntent(), this);
+        stubActivityImp.handleIntent(getIntent(), this);
     }
 
 
@@ -55,14 +63,8 @@ public class StubActivity extends Activity {
     public ClassLoader getClassLoader() {
         if(getIntent() == null) {
             return  super.getClassLoader();
-        } else {
-            String stringExtra = getIntent().getExtras().getString(PluginConst.DEX_PATH);
-            if(stringExtra == null) {
-                return super.getClassLoader();
-            } else{
-                return PluginManager.getInstance().getPluginItem(stringExtra).getClassLoader();
-            }
         }
+        return stubActivityImp.getClassLoader() == null ? super.getClassLoader() : stubActivityImp.getClassLoader();
     }
 
     @Override
@@ -70,12 +72,7 @@ public class StubActivity extends Activity {
         if(getIntent() == null) {
             return super.getResources();
         }
-        String stringExtra = getIntent().getExtras().getString(PluginConst.DEX_PATH);
-        if(stringExtra == null) {
-             return super.getResources();
-        } else{
-            return PluginManager.getInstance().getPluginItem(stringExtra).getResources();
-        }
+        return stubActivityImp.getResources() == null ? super.getResources() : stubActivityImp.getResources();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

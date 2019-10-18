@@ -2,6 +2,7 @@ package com.bitcoin.juwan.baselibrary;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -16,15 +17,19 @@ public class StubActivityImp implements IPluginActivity{
 
     private IPluginActivity iPluginActivity;
 
+    private Resources resources;
+
+    private ClassLoader classLoader;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public StubActivityImp(Intent intent, Activity activity) {
-        handleIntent(intent, activity);
+    public StubActivityImp() {
+//        handleIntent(intent, activity);
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void handleIntent(Intent intent, Activity activity) {
+    public void handleIntent(Intent intent, Activity activity) {
         String reallyActivity = intent.getExtras().getString(PluginConst.REALLY_ACTIVITY_NAME);
         String dexPath = intent.getExtras().getString(PluginConst.DEX_PATH);
-        Log.e("---:", "-----");
+        initResources(dexPath);
         ActivityStackManager.getInstance().addActivity(activity, intent.getExtras());
         try {
             Class<?> aClass = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader().loadClass(reallyActivity);
@@ -44,6 +49,11 @@ public class StubActivityImp implements IPluginActivity{
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
+    }
+
+    private void initResources(String dexPath) {
+        resources = PluginManager.getInstance().getPluginItem(dexPath).getResources();
+        classLoader = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader();
     }
 
 
@@ -102,5 +112,13 @@ public class StubActivityImp implements IPluginActivity{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+    }
+
+    public Resources getResources() {
+        return resources;
+    }
+
+    public ClassLoader getClassLoader() {
+        return classLoader;
     }
 }
