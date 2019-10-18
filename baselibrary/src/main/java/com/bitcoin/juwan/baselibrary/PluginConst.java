@@ -17,6 +17,8 @@ public interface PluginConst {
 
      String Plugin_1_ApkDex = "/sdcard/pluginmodule-debug.apk";
 
+     String Plugin_2_ApkDex = "/sdcard/pluginmodule2-debug.apk";
+
     /**
      * 四种启动模式
      */

@@ -13,6 +13,7 @@ import com.bitcoin.juwan.baselibrary.PluginConst;
 import com.bitcoin.juwan.baselibrary.PluginManager;
 
 import static com.bitcoin.juwan.baselibrary.PluginConst.Plugin_1_ApkDex;
+import static com.bitcoin.juwan.baselibrary.PluginConst.Plugin_2_ApkDex;
 
 public class MainActivity extends BaseActivity {
 
@@ -24,6 +25,7 @@ public class MainActivity extends BaseActivity {
 
         PluginManager.getInstance().init(this);
         PluginManager.getInstance().loadPluginApk(Plugin_1_ApkDex);
+        PluginManager.getInstance().loadPluginApk(Plugin_2_ApkDex);
 
         findViewById(R.id.textView).setOnClickListener(new View.OnClickListener() {
             @Override

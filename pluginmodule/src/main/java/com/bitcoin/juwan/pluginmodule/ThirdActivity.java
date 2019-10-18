@@ -8,6 +8,8 @@ import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import com.bitcoin.juwan.baselibrary.PluginBaseActivity;
+import com.bitcoin.juwan.baselibrary.PluginConst;
+import com.bitcoin.juwan.baselibrary.PluginManager;
 
 public class ThirdActivity extends PluginBaseActivity {
 
@@ -25,6 +27,17 @@ public class ThirdActivity extends PluginBaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(proxy, SecondActivity.class));
+            }
+        });
+
+        findViewById(R.id.plugin_to_second_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_2_ApkDex);
+                bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.liumengqiang.pluginmodule2.MainActivity");
+                bundle.putInt(PluginConst.LAUNCH_MODEL, PluginConst.LaunchModel.SINGLE_TASK);
+                PluginManager.getInstance().startActivity(proxy, bundle);
             }
         });
     }
