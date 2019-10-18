@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
- * FileName：IActivity
+ * FileName：IPluginActivity
  * Create By：liumengqiang
  * Description：TODO
  */
-public interface IActivity {
+public interface IPluginActivity {
     /**
      * 给插件Activity指定上下文
      *

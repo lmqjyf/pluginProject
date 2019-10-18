@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 
-import com.bitcoin.juwan.baselibrary.IProxyActivity;
 import com.bitcoin.juwan.baselibrary.PluginBaseActivity;
-import com.bitcoin.juwan.baselibrary.PluginConst;
 
 public class ThirdActivity extends PluginBaseActivity {
 
@@ -39,10 +37,6 @@ public class ThirdActivity extends PluginBaseActivity {
         Intent intent = new Intent();
         ComponentName componentName = new ComponentName("com.bitcoin.juwan.hostappproject", "com.bitcoin.juwan.hostappproject.MainActivity");
         intent.setComponent(componentName);
-        Bundle bundle = new Bundle();
-        bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.bitcoin.juwan.hostappproject.MainActivity");
-        bundle.putInt(PluginConst.LAUNCH_MODEL, 0);
-        intent.putExtras(bundle);
-        ((IProxyActivity)proxy).startHostActivity(intent);
+        proxy.startActivity(intent);
     }
 }

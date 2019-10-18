@@ -13,7 +13,7 @@ import android.view.View;
  * Create By：liumengqiang
  * Description：TODO
  */
-public class PluginBaseActivity extends AppCompatActivity implements IActivity {
+public class PluginBaseActivity extends AppCompatActivity implements IPluginActivity {
 
     protected Activity proxy;
 

@@ -1,78 +1,60 @@
 package com.bitcoin.juwan.baselibrary;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.os.Bundle;
-import android.util.Log;
 
-public class ProxyActivity extends IProxyActivity {
+public class StubActivity extends Activity {
 
-    private IActivity iActivity;
+    private IPluginActivity iPluginActivity;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String reallyActivity = getIntent().getExtras().getString(PluginConst.REALLY_ACTIVITY_NAME);
-        String dexPath = getIntent().getExtras().getString(PluginConst.DEX_PATH);
-        try {
-            Class<?> aClass = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader().loadClass(reallyActivity);
-            Object o = aClass.newInstance();
-            if(o instanceof IActivity) {
-                iActivity = (IActivity) o;
-                Bundle bundle = new Bundle();
-                bundle.putBoolean(PluginConst.isPlugin, true);
-                iActivity.attach(this);
-                iActivity.onCreate(bundle);
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
+
     }
 
 
     @Override
     protected void onStart() {
-        if(iActivity != null) {
-            iActivity.onStart();
+        if(iPluginActivity != null) {
+            iPluginActivity.onStart();
         }
         super.onStart();
     }
 
     @Override
     protected void onResume() {
-        if(iActivity != null) {
-            iActivity.onResume();
+        if(iPluginActivity != null) {
+            iPluginActivity.onResume();
         }
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        if(iActivity != null) {
-            iActivity.onPause();
+        if(iPluginActivity != null) {
+            iPluginActivity.onPause();
         }
         super.onPause();
     }
 
     @Override
     protected void onStop() {
-        if(iActivity != null) {
-            iActivity.onStop();
+        if(iPluginActivity != null) {
+            iPluginActivity.onStop();
         }
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        if(iActivity != null) {
-            iActivity.onDestroy();
+        if(iPluginActivity != null) {
+            iPluginActivity.onDestroy();
         }
         super.onDestroy();
     }
@@ -110,4 +92,9 @@ public class ProxyActivity extends IProxyActivity {
         super.startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityStackManager.getInstance().removeLastActivity();
+    }
 }

@@ -36,7 +36,7 @@ public class PluginActivityItem {
         return activity;
     }
 
-    public void setActivity(ProxyActivity activity) {
+    public void setActivity(StubActivity activity) {
         this.activity = activity;
     }
 

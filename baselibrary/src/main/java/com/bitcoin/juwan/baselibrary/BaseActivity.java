@@ -18,18 +18,25 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getIntent() != null) {
-            Bundle bundle = new Bundle();
-            bundle.putInt(PluginConst.LAUNCH_MODEL, 0);
-            bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.bitcoin.juwan.hostappproject.MainActivity");
-            ActivityStackManager.getInstance().addActivity(this, bundle);
-        }
+//        if(getIntent() != null) {
+//            if(getIntent().getExtras() == null) {
+//                Bundle bundle = new Bundle();
+//                bundle.putInt(PluginConst.LAUNCH_MODEL, 0);
+//                bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, getComponentName().getClassName());
+////                com.bitcoin.juwan.hostappproject.MainActivity
+//                ActivityStackManager.getInstance().addActivity(this, bundle);
+//            } else {
+//                getIntent().getExtras().putInt(PluginConst.LAUNCH_MODEL, 0);
+//                getIntent().getExtras().putString(PluginConst.REALLY_ACTIVITY_NAME, getComponentName().getClassName());
+//                ActivityStackManager.getInstance().addActivity(this, getIntent().getExtras());
+//            }
+//        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ActivityStackManager.getInstance().removeLastActivity();
+//        ActivityStackManager.getInstance().removeLastActivity();
     }
 }

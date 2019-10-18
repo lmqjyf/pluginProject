@@ -3,7 +3,7 @@
     package="com.bitcoin.juwan.baselibrary">
 
     <application>
-        <activity android:name=".ProxyActivity"></activity>
+        <activity android:name=".StubActivity"></activity>
     </application>
 
 </manifest>

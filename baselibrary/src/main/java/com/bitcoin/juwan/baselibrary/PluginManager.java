@@ -95,7 +95,7 @@ public class PluginManager {
 
         Log.e("-----", "" + isCanJump);
         if (isCanJump) {
-            Intent intent = new Intent(context, ProxyActivity.class);
+            Intent intent = new Intent(context, StubActivity.class);
             intent.putExtras(bundle);
             context.startActivity(intent);
         }
