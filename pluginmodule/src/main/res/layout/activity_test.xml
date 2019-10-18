@@ -4,11 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TestActivity">
+    tools:context=".SecondActivity"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="我是插件Activity2"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/plugin_test_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="我是插件第二个Activity"/>
+        android:text="点我跳转到Activity3"
+        android:background="@drawable/buttom_back"/>
 </LinearLayout>

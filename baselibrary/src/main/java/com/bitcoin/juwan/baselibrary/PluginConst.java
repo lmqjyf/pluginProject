@@ -5,13 +5,30 @@ package com.bitcoin.juwan.baselibrary;
  * Create By：liumengqiang
  * Description：TODO
  */
-public class PluginConst {
+public interface PluginConst {
 
-    public static String DEX_PATH = "dex_path";
+     String DEX_PATH = "dex_path";
 
-    public static String REALLY_ACTIVITY_NAME = "reallyActivityName";
+    String LAUNCH_MODEL = "launch_model";
 
-    public static String isPlugin = "isPlugin";
+    String REALLY_ACTIVITY_NAME = "reallyActivityName";
 
-    public static String Plugin_1_ApkDex = "/sdcard/pluginmodule-debug.apk";
+    String isPlugin = "isPlugin";
+
+     String Plugin_1_ApkDex = "/sdcard/pluginmodule-debug.apk";
+
+     String Plugin_2_ApkDex = "/sdcard/pluginmodule2-debug.apk";
+
+    /**
+     * 四种启动模式
+     */
+    interface LaunchModel {
+        int STANDARD = 0;
+
+        int SINGLE_TOP = 1;
+
+        int SINGLE_TASK = 2;
+
+        int SINGLE_INSTANCE = 3;
+    }
 }

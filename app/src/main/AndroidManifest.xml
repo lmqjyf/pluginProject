@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.bitcoin.juwan.pluginproject.TestService"/>
+        <!--<service android:name="com.bitcoin.juwan.pluginproject.TestService"/>-->
     </application>
 
 </manifest>
