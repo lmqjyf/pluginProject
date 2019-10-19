@@ -17,11 +17,7 @@ public class MainActivity extends PluginBaseActivity {
         findViewById(R.id.go_back_plugin_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_1_ApkDex);
-                bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.bitcoin.juwan.pluginmodule.MainActivity");
-                bundle.putInt(PluginConst.LAUNCH_MODEL, PluginConst.LaunchModel.SINGLE_TASK);
-                PluginManager.getInstance().startActivity(proxy, bundle);
+                startOtherPluginActivity(null, PluginConst.Plugin_1_ApkDex, "com.bitcoin.juwan.pluginmodule.MainActivity", 2);
             }
         });
     }

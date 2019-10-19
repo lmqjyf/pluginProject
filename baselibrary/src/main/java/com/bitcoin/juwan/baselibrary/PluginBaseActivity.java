@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bitcoin.juwan.baselibrary.plugin.ILaunch;
 import com.bitcoin.juwan.baselibrary.plugin.IPluginActivity;
 import com.bitcoin.juwan.baselibrary.plugin.PluginConst;
 import com.bitcoin.juwan.baselibrary.plugin.PluginManager;
@@ -18,7 +17,7 @@ import com.bitcoin.juwan.baselibrary.plugin.PluginManager;
  * Create By：liumengqiang
  * Description：所有的插件Activity都要继承该类
  */
-public class PluginBaseActivity extends AppCompatActivity implements IPluginActivity, ILaunch {
+public class PluginBaseActivity extends AppCompatActivity implements IPluginActivity {
 
     protected Activity proxy;
 
@@ -122,22 +121,45 @@ public class PluginBaseActivity extends AppCompatActivity implements IPluginActi
         }
     }
 
+    /**
+     * 同一个插件之间跳转
+     * @param intent
+     */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void startActivity(Intent intent) {
         if(!isPlugin) {
             super.startActivity(intent);
         } else {
-            Bundle bundle = new Bundle();
-            bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_1_ApkDex);
-            bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, intent.getComponent().getClassName());
-            bundle.putInt(PluginConst.LAUNCH_MODEL, launchModel == -1 ? PluginConst.LaunchModel.SINGLE_TASK : launchModel);
+            Bundle bundle = setBundleData(intent.getExtras(), PluginConst.Plugin_1_ApkDex, intent.getComponent().getClassName(), PluginConst.LaunchModel.SINGLE_TASK);
             PluginManager.getInstance().startActivity(proxy, bundle);
         }
     }
 
-    @Override
-    public void setLaunchModel(int launchModel) {
-        this.launchModel = launchModel;
+    /**
+     * 一个插件跳Activity转到另一个插件Activity
+     * @param bundleParam
+     * @param dexPath
+     * @param reallyActivityName
+     * @param launchModel
+     */
+    public  void startOtherPluginActivity(Bundle bundleParam, String dexPath, String reallyActivityName, int launchModel) {
+        Bundle bundle = setBundleData(bundleParam, dexPath, reallyActivityName, launchModel);
+        PluginManager.getInstance().startActivity(proxy, bundle);
+    }
+
+    /**
+     * @param bundleParam
+     * @param dexPath
+     * @param reallyActivityName
+     * @param launchModel
+     * @return
+     */
+    private Bundle setBundleData(Bundle bundleParam, String dexPath, String reallyActivityName, int launchModel) {
+        Bundle bundle = bundleParam == null ? new Bundle() : bundleParam;
+        bundle.putString(PluginConst.DEX_PATH, dexPath);
+        bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, reallyActivityName);
+        bundle.putInt(PluginConst.LAUNCH_MODEL, launchModel);
+        return  bundle;
     }
 }

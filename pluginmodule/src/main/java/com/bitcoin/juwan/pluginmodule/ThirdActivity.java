@@ -33,11 +33,7 @@ public class ThirdActivity extends PluginBaseActivity {
         findViewById(R.id.plugin_to_second_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString(PluginConst.DEX_PATH, PluginConst.Plugin_2_ApkDex);
-                bundle.putString(PluginConst.REALLY_ACTIVITY_NAME, "com.liumengqiang.pluginmodule2.MainActivity");
-                bundle.putInt(PluginConst.LAUNCH_MODEL, PluginConst.LaunchModel.SINGLE_TASK);
-                PluginManager.getInstance().startActivity(proxy, bundle);
+                startOtherPluginActivity(null, PluginConst.Plugin_2_ApkDex, "com.liumengqiang.pluginmodule2.MainActivity", 2);
             }
         });
     }
