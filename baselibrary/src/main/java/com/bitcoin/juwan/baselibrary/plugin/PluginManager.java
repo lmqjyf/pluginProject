@@ -7,9 +7,12 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.bitcoin.juwan.baselibrary.StubActivity;
 import com.bitcoin.juwan.baselibrary.launchmodel.ActivityStackManager;
+import com.bitcoin.juwan.baselibrary.utils.StringUtils;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -92,11 +95,31 @@ public class PluginManager {
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void startActivity(Context context, Bundle bundle) {
+        if(!checkActivityIsExit(bundle)) {
+            Toast.makeText(context, "未加载插件", Toast.LENGTH_SHORT).show();
+            return;
+        }
         boolean isCanJump = ActivityStackManager.getInstance().checkCanStartNewActivity(bundle);
         if (isCanJump) {
             Intent intent = new Intent(context, StubActivity.class);
             intent.putExtras(bundle);
             context.startActivity(intent);
         }
+    }
+
+    /**
+     *
+     */
+    private boolean checkActivityIsExit(Bundle bundle) {
+        String dexPath = bundle.getString(PluginConst.DEX_PATH);
+        String reallyActivityName = bundle.getString(PluginConst.REALLY_ACTIVITY_NAME);
+        ClassLoader classLoader = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader();
+        Class<?> aClass = null;
+        try {
+            aClass = classLoader.loadClass(reallyActivityName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return aClass == null ? false : true;
     }
 }

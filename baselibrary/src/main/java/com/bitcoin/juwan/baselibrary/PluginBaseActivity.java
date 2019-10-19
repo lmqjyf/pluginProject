@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bitcoin.juwan.baselibrary.plugin.IPluginActivity;
 import com.bitcoin.juwan.baselibrary.plugin.PluginConst;
@@ -144,6 +145,10 @@ public class PluginBaseActivity extends AppCompatActivity implements IPluginActi
      * @param launchModel
      */
     public  void startOtherPluginActivity(Bundle bundleParam, String dexPath, String reallyActivityName, int launchModel) {
+        if(!isPlugin) {
+            Toast.makeText(proxy, "无法找到："+ reallyActivityName, Toast.LENGTH_SHORT).show();
+            return;
+        }
         Bundle bundle = setBundleData(bundleParam, dexPath, reallyActivityName, launchModel);
         PluginManager.getInstance().startActivity(proxy, bundle);
     }
