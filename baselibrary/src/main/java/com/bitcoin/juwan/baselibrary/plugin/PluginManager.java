@@ -95,7 +95,7 @@ public class PluginManager {
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void startActivity(Context context, Bundle bundle) {
-        if(!checkActivityIsExit(bundle)) {
+        if(!checkPluginActivityIsExit(bundle)) {
             Toast.makeText(context, "未加载插件", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -110,7 +110,7 @@ public class PluginManager {
     /**
      *
      */
-    private boolean checkActivityIsExit(Bundle bundle) {
+    private boolean checkPluginActivityIsExit(Bundle bundle) {
         String dexPath = bundle.getString(PluginConst.DEX_PATH);
         String reallyActivityName = bundle.getString(PluginConst.REALLY_ACTIVITY_NAME);
         ClassLoader classLoader = PluginManager.getInstance().getPluginItem(dexPath).getClassLoader();
