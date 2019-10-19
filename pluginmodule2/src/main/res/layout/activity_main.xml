@@ -19,7 +19,7 @@
         android:id="@+id/go_back_plugin_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点我返回到插件1的Activity1"
+        android:text="点我返回到插件1的页面1"
         android:background="@drawable/buttom_back"/>
 
 </LinearLayout>

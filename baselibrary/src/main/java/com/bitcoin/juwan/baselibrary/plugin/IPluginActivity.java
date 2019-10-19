@@ -1,4 +1,4 @@
-package com.bitcoin.juwan.baselibrary;
+package com.bitcoin.juwan.baselibrary.plugin;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.os.Bundle;
  * FileName：IPluginActivity
  * Create By：liumengqiang
  * Description：插件基类接口
+ * TODO 需要定义一份和所有Activity中一样方法，Activity中的有些没有定义出来。
  */
 public interface IPluginActivity {
     /**

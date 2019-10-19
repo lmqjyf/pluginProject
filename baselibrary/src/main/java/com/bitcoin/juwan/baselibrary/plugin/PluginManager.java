@@ -1,4 +1,4 @@
-package com.bitcoin.juwan.baselibrary;
+package com.bitcoin.juwan.baselibrary.plugin;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,9 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+
+import com.bitcoin.juwan.baselibrary.StubActivity;
+import com.bitcoin.juwan.baselibrary.launchmodel.ActivityStackManager;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -25,7 +27,7 @@ public class PluginManager {
 
     /**
      * String : 插件的DexPath路径
-     * PlugItem：详见类描述
+     * PlugItem：@Link #PluginItem
      */
     private HashMap<String, PluginItem> pluginItemHashMap;
 

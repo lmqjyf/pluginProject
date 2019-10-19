@@ -1,4 +1,4 @@
-package com.bitcoin.juwan.baselibrary;
+package com.bitcoin.juwan.baselibrary.plugin;
 
 /**
  * author: liumengqiang
@@ -6,5 +6,9 @@ package com.bitcoin.juwan.baselibrary;
  * Description : 设置插件启动模式接口
  */
 public interface ILaunch {
+    /**
+     * 设置启动模式
+     * @param launchModel
+     */
     void setLaunchModel(int launchModel);
 }

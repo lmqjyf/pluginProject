@@ -1,4 +1,4 @@
-package com.bitcoin.juwan.baselibrary;
+package com.bitcoin.juwan.baselibrary.plugin;
 
 import android.content.res.Resources;
 

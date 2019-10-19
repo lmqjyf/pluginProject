@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.bitcoin.juwan.baselibrary.PluginBaseActivity;
-import com.bitcoin.juwan.baselibrary.PluginConst;
-import com.bitcoin.juwan.baselibrary.PluginManager;
+import com.bitcoin.juwan.baselibrary.plugin.PluginConst;
+import com.bitcoin.juwan.baselibrary.plugin.PluginManager;
 
 public class MainActivity extends PluginBaseActivity {
 

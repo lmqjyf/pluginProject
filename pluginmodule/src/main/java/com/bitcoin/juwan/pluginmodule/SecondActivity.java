@@ -1,12 +1,10 @@
 package com.bitcoin.juwan.pluginmodule;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.bitcoin.juwan.baselibrary.PluginBaseActivity;
-import com.bitcoin.juwan.baselibrary.PluginManager;
 
 public class SecondActivity extends PluginBaseActivity {
 

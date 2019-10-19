@@ -1,24 +1,29 @@
 package com.bitcoin.juwan.baselibrary;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.os.Bundle;
-import android.util.Log;
+
+/**
+ * FileName：StubActivity
+ * Create By：liumengqiang
+ * Description：占位Activity（跳转到插件中的Activity，实际操作者都是这个占位Activity）
+ */
+import com.bitcoin.juwan.baselibrary.launchmodel.ActivityStackManager;
 
 public class StubActivity extends Activity {
 
-    private StubActivityImp stubActivityImp;
+    private StubActivityImpl stubActivityImp;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
-        stubActivityImp = new StubActivityImp();
+        stubActivityImp = new StubActivityImpl();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

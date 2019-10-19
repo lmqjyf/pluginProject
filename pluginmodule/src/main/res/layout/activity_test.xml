@@ -12,13 +12,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="我是插件Activity2"
+        android:text="插件1"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="我是页面2"
         android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/plugin_test_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点我跳转到Activity3"
+        android:text="点我跳转到插件1的页面3"
         android:background="@drawable/buttom_back"/>
 </LinearLayout>

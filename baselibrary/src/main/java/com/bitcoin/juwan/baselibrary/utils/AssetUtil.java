@@ -1,4 +1,4 @@
-package com.bitcoin.juwan.baselibrary;
+package com.bitcoin.juwan.baselibrary.utils;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * FileName：AssetUtil
  * Create By：liumengqiang
- * Description：TODO
+ * Description：此项目用不到该工具类
  */
 public class AssetUtil {
     /**

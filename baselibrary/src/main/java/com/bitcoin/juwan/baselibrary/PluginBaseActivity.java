@@ -6,19 +6,23 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+
+import com.bitcoin.juwan.baselibrary.plugin.ILaunch;
+import com.bitcoin.juwan.baselibrary.plugin.IPluginActivity;
+import com.bitcoin.juwan.baselibrary.plugin.PluginConst;
+import com.bitcoin.juwan.baselibrary.plugin.PluginManager;
 
 /**
  * FileName：PluginBaseActivity
  * Create By：liumengqiang
- * Description：基类
+ * Description：所有的插件Activity都要继承该类
  */
-public class PluginBaseActivity extends AppCompatActivity implements IPluginActivity , ILaunch{
+public class PluginBaseActivity extends AppCompatActivity implements IPluginActivity, ILaunch {
 
     protected Activity proxy;
 
-    boolean isPlugin = false;
+    boolean isPlugin = false; // 是否是插件运行
 
     private int launchModel = -1;
 

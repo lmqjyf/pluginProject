@@ -1,22 +1,24 @@
-package com.bitcoin.juwan.baselibrary;
+package com.bitcoin.juwan.baselibrary.launchmodel;
 
 import android.app.Activity;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.bitcoin.juwan.baselibrary.StubActivity;
+
 /**
  * FileName：PluginActivityItem
  * Create By：liumengqiang
- * Description：TODO
+ * Description：已经打开的插件的对象
  */
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class PluginActivityItem {
 
-    private Activity activity;
+    private Activity activity; //打开的插件
 
-    private int launchModel;
+    private int launchModel; //插件Activity的启动模式
 
-    private String activityReallyName;
+    private String activityReallyName;  //插件Activity实际启动名称（包名+类型）
 
     public String getActivityReallyName() {
         return activityReallyName;

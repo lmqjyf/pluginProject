@@ -1,10 +1,12 @@
-package com.bitcoin.juwan.baselibrary;
+package com.bitcoin.juwan.baselibrary.launchmodel;
 
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+
+import com.bitcoin.juwan.baselibrary.plugin.PluginConst;
+import com.bitcoin.juwan.baselibrary.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -83,6 +85,9 @@ public class ActivityStackManager {
                 return checkSingleTask(index);
             }
             case PluginConst.LaunchModel.SINGLE_INSTANCE: { //SingInstance模式
+                /**
+                 * TODO 此处没有做处理
+                 */
                 return true;
             }
         }
@@ -137,15 +142,13 @@ public class ActivityStackManager {
      * 删除最后一个元素
      */
     public void removeLastActivity() {
-        Log.e("----:", ""  + activityList.size() +  "");
         activityList.remove(activityList.size() - 1);
     }
 
     /**
-     *
+     * 清空插件的Activity
      */
     public void clearActivityList() {
-        Log.e("----:", "清空");
         activityList.clear();
     }
 }

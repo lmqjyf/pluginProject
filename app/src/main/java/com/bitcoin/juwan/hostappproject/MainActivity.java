@@ -1,21 +1,18 @@
 package com.bitcoin.juwan.hostappproject;
 
-import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bitcoin.juwan.baselibrary.ActivityStackManager;
-import com.bitcoin.juwan.baselibrary.BaseActivity;
-import com.bitcoin.juwan.baselibrary.PluginConst;
-import com.bitcoin.juwan.baselibrary.PluginManager;
+import com.bitcoin.juwan.baselibrary.plugin.PluginConst;
+import com.bitcoin.juwan.baselibrary.plugin.PluginManager;
 
-import static com.bitcoin.juwan.baselibrary.PluginConst.Plugin_1_ApkDex;
-import static com.bitcoin.juwan.baselibrary.PluginConst.Plugin_2_ApkDex;
+import static com.bitcoin.juwan.baselibrary.plugin.PluginConst.Plugin_1_ApkDex;
+import static com.bitcoin.juwan.baselibrary.plugin.PluginConst.Plugin_2_ApkDex;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override

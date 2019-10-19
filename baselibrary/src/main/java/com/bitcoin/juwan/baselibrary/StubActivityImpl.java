@@ -6,14 +6,18 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+
+import com.bitcoin.juwan.baselibrary.launchmodel.ActivityStackManager;
+import com.bitcoin.juwan.baselibrary.plugin.IPluginActivity;
+import com.bitcoin.juwan.baselibrary.plugin.PluginConst;
+import com.bitcoin.juwan.baselibrary.plugin.PluginManager;
 
 /**
  * author: liumengqiang
  * Date : 2019/10/18
- * Description :
+ * Description : 调用插件Activity中的具体方法
  */
-public class StubActivityImp implements IPluginActivity{
+public class StubActivityImpl implements IPluginActivity {
 
     private IPluginActivity iPluginActivity;
 
@@ -22,7 +26,7 @@ public class StubActivityImp implements IPluginActivity{
     private ClassLoader classLoader;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public StubActivityImp() {
+    public StubActivityImpl() {
 //        handleIntent(intent, activity);
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
